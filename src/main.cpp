@@ -3,6 +3,9 @@
 
 #ifndef __ANDROID__
 #include "glad/gl.h"
+#else
+#include <GLES3/gl3.h>
+#define glClearDepth(color) glClearDepthf(color)
 #endif
 
 SDL_Window *window = nullptr;
@@ -24,6 +27,7 @@ int main(int argc, char **argv) {
 #endif
 
   glClearDepth(1.0);
+
   glEnable(GL_DEPTH_TEST);
   SDL_GL_SetSwapInterval(1);
 
