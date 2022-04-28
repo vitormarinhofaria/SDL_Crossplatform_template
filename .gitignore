@@ -1,1 +1,8 @@
-build
+**/build
+
+.vscode/
+
+**/.idea/
+**/.gradle
+android/app/.cxx
+android/local.properties
