@@ -13,7 +13,7 @@ android {
         if (buildAsApplication) {
             applicationId "org.libsdl.app"
         }
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 32
         versionCode 1
         versionName "1.0"
@@ -23,9 +23,9 @@ android {
             //     abiFilters 'arm64-v8a', 'x86_64'
             // }
             cmake {
-                arguments "-DANDROID_APP_PLATFORM=android-16", "-DANDROID_STL=c++_static"
-                // abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
-                abiFilters 'arm64-v8a', 'x86_64'
+                arguments "-DANDROID_APP_PLATFORM=android-21", "-DANDROID_STL=c++_static"
+                abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+                //abiFilters 'arm64-v8a', 'x86_64'
             }
         }
     }
@@ -35,6 +35,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    
     applicationVariants.all { variant ->
         tasks["merge${variant.name.capitalize()}Assets"]
             .dependsOn("externalNativeBuild${variant.name.capitalize()}")
@@ -53,10 +54,7 @@ android {
         }
        
     }
-    lintOptions {
-        abortOnError false
-    }
-    
+
     if (buildAsLibrary) {
         libraryVariants.all { variant ->
             variant.outputs.each { output ->
