@@ -18,7 +18,7 @@ int main(int argc, char **argv) {
 
   window =
       SDL_CreateWindow("CrossGui Window", SDL_WINDOWPOS_CENTERED,
-                       SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_OPENGL);
+                       SDL_WINDOWPOS_CENTERED, 600, 800, SDL_WINDOW_OPENGL);
 
   glContext = SDL_GL_CreateContext(window);
 
@@ -45,6 +45,11 @@ int main(int argc, char **argv) {
         if (event.key.keysym.sym == SDLK_ESCAPE) {
           running = false;
         }
+        break;
+      }
+
+      case SDL_MOUSEBUTTONDOWN: {
+        SDL_ShowSimpleMessageBox(0, "Uma Mensagem", "Aqui vai a mensagem oloco", window);
         break;
       }
 
