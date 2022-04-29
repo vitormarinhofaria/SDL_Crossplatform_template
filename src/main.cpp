@@ -63,7 +63,7 @@ int main(int argc, char **argv)
     constexpr ImWchar icon_ranges[] = {ICON_MIN_FA, ICON_MAX_FA, 0};
     ImFontConfig nerdFontConfig{};
     nerdFontConfig.MergeMode = true;
-    auto *nerdFont = io.Fonts->AddFontFromMemoryCompressedTTF(caskaydia_cove_nerd_bin_compressed_data, font_size, 20);
+    auto *nerdFont = io.Fonts->AddFontFromMemoryCompressedTTF(caskaydia_cove_nerd_bin_compressed_data, font_size, 20, nullptr, io.Fonts->GetGlyphRangesDefault());
     auto *fontAwesome = io.Fonts->AddFontFromMemoryTTF((void *)s_fa_solid_900_ttf, font_size, 20, &nerdFontConfig, icon_ranges);
 
     bool running = true;
@@ -145,12 +145,12 @@ void drawUi()
     ImGui::NewFrame();
 
     {
-        static char inputText[128] = u8"";
-        ImGui::Begin(u8"Hello Window");
+        static char inputText[128] = "";
+        ImGui::Begin("Hello Window");
 
-        ImGui::Text(u8"FontAwesome Icons -> " ICON_FA_GEAR ICON_FA_BARS);
-        ImGui::InputText(u8"Some Text Input", inputText, 128);
-        ImGui::ColorPicker4(u8"GL Clear Color", (float *)&clearColor);
+        ImGui::Text("FontAwesome Icons -> " ICON_FA_GEAR ICON_FA_BARS);
+        ImGui::InputText("Some Text Input", inputText, 128);
+        ImGui::ColorPicker4("GL Clear Color", (float *)&clearColor);
 
         ImGui::End();
     }
