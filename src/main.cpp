@@ -186,4 +186,5 @@ bool save_imgui_settings_file()
         return false;
 
     SDL_RWclose(iniFile);
+    return true;
 }
